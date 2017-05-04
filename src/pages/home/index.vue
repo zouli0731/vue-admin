@@ -12,7 +12,7 @@
   export default{
     data(){
       return {
-        msg: 'home page'
+        msg: '首页'
       }
     },
     components: {

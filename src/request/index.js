@@ -1,10 +1,8 @@
 /**
- * @file: index.
+ *
  * @intro: axios配置.
- * @author: zzmhot.
- * @email: zzmhot@163.com.
+ *
  * @Date: 2017/4/27 17:48.
- * @Copyright(©) 2017 by thinkive.
  *
  */
 
@@ -31,26 +29,25 @@ const install = function (Vue) {
   //设置请求超时设置
   axios.defaults.timeout = 2000
   //设置请求时的header
-  axios.defaults.headers = {
-  }
+  axios.defaults.headers = {}
 
-  /**
-   * 添加响应拦截器
+  /**  * 添加响应拦截器
    */
   axios.interceptors.response.use(response => {
     //成功时
-    let resData = response.data
-    let dataCode = resData.code
-    let dataMsg = resData.msg
-    let dataResult = resData.data
+    let responseData = response.data
+    let dataCode = responseData.code
+    let dataError = responseData.error
+    let dataResult = responseData.data
     if (dataCode === result_code.success) {
-      return Promise.resolve(resData)
+      return Promise.resolve(responseData)
     } else if (dataCode === result_code.unlogin) {
       setUserInfo(null)
       router.replace({name: "login"})
+      return
     }
-    $vue.$message.warning(dataMsg)
-    return Promise.reject(resData)
+    $vue.$message.warning(dataError)
+    return Promise.reject(responseData)
   }, error => {
     //错误时
     if (error.response) {

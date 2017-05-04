@@ -26,7 +26,6 @@
                 v-model="form.age"
                 style="width: 250px;">
               </el-input-number>
-              </el-input>
             </el-form-item>
             <el-form-item label="生日:">
               <el-date-picker
@@ -51,8 +50,8 @@
               </el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交</el-button>
               <el-button @click="$router.back()">取消</el-button>
+              <el-button type="primary" @click="on_submit_form" :loading="on_submit_loading">立即提交</el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -62,7 +61,7 @@
 </template>
 <script type="text/javascript">
   import {panelTitle} from 'components'
-  import {request_table, port_file, result_code} from 'common/request_api'
+  import {request_table, result_code} from 'common/request_api'
   import {tools_verify} from 'common/tools'
 
   export default{
@@ -96,8 +95,8 @@
             id: this.route_id
           }
         })
-          .then(({data}) => {
-            this.form = data
+          .then(({data: responseData}) => {
+            this.form = responseData
             this.load_data = false
           })
           .catch(() => {
@@ -114,11 +113,12 @@
           if (!valid) return false
           this.on_submit_loading = true
           this.$http.post(request_table.save, this.form)
-            .then(({msg}) => {
-              this.$message.success(msg)
+            .then(({data: responseData}) => {
+              this.$message.success("操作成功")
               setTimeout(() => {
                 this.$router.back()
               }, 500)
+              this.on_submit_loading = false
             })
             .catch(() => {
               this.on_submit_loading = false

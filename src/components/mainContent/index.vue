@@ -1,23 +1,25 @@
 <template>
-  <div class="main-content ofh" :class="{'no-show-all':!is_show_all}">
+  <div>
     <template v-if="is_show_all">
-      <left-slide style="z-index: 150"></left-slide>
+      <left-slide style="z-index: 151"></left-slide>
       <header-section style="z-index: 150"></header-section>
     </template>
-    <el-row>
-      <el-col :span="24">
-        <div class="wrapper">
-          <div class="pageContent">
-            <el-row>
-              <el-col :span="24">
-                <slot></slot>
-              </el-col>
-            </el-row>
+    <div class="main-content ofh" :class="{'no-show-all':!is_show_all}">
+      <el-row>
+        <el-col :span="24">
+          <div class="wrapper">
+            <div class="pageContent">
+              <el-row>
+                <el-col :span="24">
+                  <slot></slot>
+                </el-col>
+              </el-row>
+            </div>
           </div>
-        </div>
-        <!--<v-footer></v-footer>-->
-      </el-col>
-    </el-row>
+          <!--<v-footer></v-footer>-->
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 <script type="text/javascript">

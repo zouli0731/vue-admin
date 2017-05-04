@@ -1,10 +1,9 @@
 /**
  * @file: cookie.
  * @intro: cookie存储类.
- * @author: zzmhot.
- * @email: zzmhot@163.com.
+ *
+ *
  * @Date: 2017/4/28 10:45.
- * @Copyright(©) 2017 by zzmhot.
  *
  */
 
@@ -13,13 +12,11 @@ import {storagePrefix} from './setting'
 
 import {tools_verify} from 'common/tools'
 
-/**
- * cookies操作类
+/** cookies操作类
  */
 export default new class Cookie {
 
-  /**
-   * 构造函数
+  /**  * 构造函数
    */
   constructor() {
     this.defaults = {}
@@ -28,8 +25,7 @@ export default new class Cookie {
   }
 
 
-  /**
-   * 根据key获取cookie的值
+  /**  * 根据key获取cookie的值
    * @param {string} key 键
    * @returns {object} 值
    */
@@ -52,8 +48,7 @@ export default new class Cookie {
     return value
   }
 
-  /**
-   * 设置cookies
+  /**  * 设置cookies
    * @param key 键
    * @param value 值
    * @param options 选项
@@ -86,8 +81,7 @@ export default new class Cookie {
     return this
   }
 
-  /**
-   * 删除cookie
+  /**  * 删除cookie
    * @param {string||array} keys 删除cookie的key
    * @returns {Cookie}
    */
@@ -99,8 +93,7 @@ export default new class Cookie {
     return this
   }
 
-  /**
-   * 获取所有的cookie
+  /**  * 获取所有的cookie
    * @returns {object} cookie对象
    */
   all() {

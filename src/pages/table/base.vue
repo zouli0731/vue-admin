@@ -5,18 +5,20 @@
     <div class="panel-title-down">
       <el-row>
         <el-col :span="20">
-          <el-row :gutter="10">
-            <el-col :span="6">
-              <el-input size="small" placeholder="名称"></el-input>
-            </el-col>
-            <el-col :span="1">
-              <el-button type="primary" size="small" native-type="submit">查询</el-button>
-            </el-col>
-          </el-row>
+          <form @submit.prevent="on_refresh">
+            <el-row :gutter="10">
+              <el-col :span="6">
+                <el-input size="small" placeholder="名称" v-model="search_data.name"></el-input>
+              </el-col>
+              <el-col :span="1">
+                <el-button type="primary" size="small" native-type="submit">查询</el-button>
+              </el-col>
+            </el-row>
+          </form>
         </el-col>
         <el-col :span="4">
           <div class="fr">
-            <el-button @click.stop="" size="small">
+            <el-button @click.stop="on_refresh" size="small">
               <i class="fa fa-refresh"></i>
             </el-button>
             <router-link :to="{name: 'tableAdd'}" tag="span">
@@ -102,7 +104,7 @@
             :current-page="currentPage"
             :page-size="10"
             layout="total, prev, pager, next"
-            :total="total">
+            :total="total_count">
           </el-pagination>
         </div>
       </bottom-tool-bar>
@@ -120,13 +122,14 @@
         //当前页码
         currentPage: 1,
         //数据总条目
-        total: 0,
+        total_count: 0,
         //每页显示多少条数据
-        length: 15,
+        rows: 10,
         //请求时的loading效果
         load_data: true,
         //批量选择数组
-        batch_select: []
+        batch_select: [],
+        search_data: {},
       }
     },
     components: {
@@ -147,18 +150,16 @@
         this.$http.get(request_table.list, {
           params: {
             page: this.currentPage,
-            length: this.length
+            rows: this.rows,
+            ...this.search_data
           }
+        }).then(({data: responseData}) => {
+          this.table_data = responseData.data
+          this.total_count = responseData.totalCount
+          this.load_data = false
+        }).catch(() => {
+          this.load_data = false
         })
-          .then(({data, page, total}) => {
-            this.table_data = data
-            this.currentPage = page
-            this.total = total
-            this.load_data = false
-          })
-          .catch(() => {
-            this.load_data = false
-          })
       },
       //单个删除
       delete_data(item){
@@ -166,16 +167,14 @@
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
+        }).then(() => {
+          this.load_data = true
+          this.$http.post(request_table.del, {id: item.id})
+            .then(({data: responseData}) => {
+              this.get_table_data()
+              this.$message.success("操作成功")
+            })
         })
-          .then(() => {
-            this.load_data = true
-            this.$http.post(request_table.del, item)
-              .then(({msg}) => {
-                this.get_table_data()
-                this.$message.success(msg)
-              })
-          })
-
       },
       //页码选择
       handleCurrentChange(val) {
@@ -192,19 +191,14 @@
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
+        }).then(() => {
+          this.load_data = true
+          this.$http.post(request_table.batch_del, this.batch_select)
+            .then(({data: responseData}) => {
+              this.get_table_data()
+              this.$message.success("操作成功")
+            })
         })
-          .then(() => {
-            this.load_data = true
-            this.$http.post(request_table.batch_del, this.batch_select)
-              .then(({msg}) => {
-                this.get_table_data()
-                this.$message.success(msg)
-              })
-              .catch(() => {
-              })
-          })
-          .catch(() => {
-          })
       }
     }
   }

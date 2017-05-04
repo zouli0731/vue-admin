@@ -13,9 +13,20 @@
 
 <script type="text/javascript">
   import {mainContent} from 'components'
-
+  import {request_login, result_code} from 'common/request_api'
   export default {
     name: 'app',
+    created(){
+      this.$http.get(request_login.user_info, {})
+        .then(({data: responseData}) => {
+          if (responseData.code === result_code.success) {
+            this.set_user_info({
+              user: responseData,
+              login: true
+            })
+          }
+        })
+    },
     components: {
       mainContent
     }

@@ -1,13 +1,6 @@
 /**
- * Created by zzmhot on 2017/3/23.
  *
  * 路由Map
- *
- * @author: zzmhot
- * @github: https://github.com/zzmhot
- * @email: zzmhot@163.com
- * @Date: 2017/3/23 18:30
- * @Copyright(©) 2017 by zzmhot.
  *
  */
 
@@ -22,7 +15,7 @@ Vue.use(VueRouter)
 //使用AMD方式加载
 // component: resolve => require(['pages/home'], resolve),
 const routes = [{
-  path: '/home',
+  path: '/',
   name: 'home',
   components: {
     default: require('pages/home'),
@@ -39,16 +32,6 @@ const routes = [{
   },
   meta: {
     title: "基本表格",
-    auth: true
-  }
-}, {
-  path: '/table/sort',
-  name: 'tableSort',
-  components: {
-    default: require('pages/table/sort'),
-  },
-  meta: {
-    title: "排序表格",
     auth: true
   }
 }, {
@@ -78,9 +61,6 @@ const routes = [{
     fullView: require('pages/user/login')
   }
 }, {
-  path: '',
-  redirect: '/home'
-}, {
   path: '*',
   name: 'notPage',
   components: {
@@ -107,20 +87,19 @@ router.beforeEach((to, from, next) => {
   let toName = to.name
   // let fromName = from.name
   let is_login = store.state.user_info.login
-
-  if (!is_login && toName !== 'login') {
+  // if (!is_login && toName !== 'login') {
+  //   next({
+  //     name: 'login'
+  //   });
+  // } else {
+  if (is_login && toName === 'login') {
     next({
-      name: 'login'
+      path: '/'
     });
   } else {
-    if (is_login && toName === 'login') {
-      next({
-        path: '/'
-      });
-    } else {
-      next()
-    }
+    next()
   }
+  // }
 
 })
 

@@ -1,10 +1,8 @@
-/**
- * @file: index.
+/** @file: index.
  * @intro: storage存储.
- * @author: zzmhot.
- * @email: zzmhot@163.com.
+ *
+ *
  * @Date: 2017/4/28 10:42.
- * @Copyright(©) 2017 by zzmhot.
  *
  */
 
