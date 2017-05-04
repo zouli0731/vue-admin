@@ -12,16 +12,16 @@
  */
 
 import leftSlide from 'components/leftSlide'
-import top from 'components/top'
+import headerSection from 'components/headerSection'
 import mainContent from 'components/mainContent'
 import panelTitle from 'components/panelTitle'
 import simpleImageUpload from 'components/simpleImageUpload'
 import bottomToolBar from 'components/bottomToolBar'
 
 export {
-  top,
-  leftSlide,
   mainContent,
+  leftSlide,
+  headerSection,
   panelTitle,
   simpleImageUpload,
   bottomToolBar

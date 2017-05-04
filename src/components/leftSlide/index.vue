@@ -61,14 +61,6 @@
             title: "排序表格",
             path: "/table/sort"
           }]
-        }, {
-          title: "图表管理",
-          path: "/charts",
-          icon: "fa-bar-chart-o",
-          child: [{
-            title: "柱状图表",
-            path: "/charts/bar"
-          }]
         }]
       }
     },

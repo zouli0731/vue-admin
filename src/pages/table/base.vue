@@ -111,7 +111,7 @@
 </template>
 <script type="text/javascript">
   import {panelTitle, bottomToolBar} from 'components'
-  import {port_table} from 'common/request_api'
+  import {request_table} from 'common/request_api'
 
   export default{
     data(){
@@ -144,7 +144,7 @@
       //获取数据
       get_table_data(){
         this.load_data = true
-        this.$http.get(port_table.list, {
+        this.$http.get(request_table.list, {
           params: {
             page: this.currentPage,
             length: this.length
@@ -169,7 +169,7 @@
         })
           .then(() => {
             this.load_data = true
-            this.$http.post(port_table.del, item)
+            this.$http.post(request_table.del, item)
               .then(({msg}) => {
                 this.get_table_data()
                 this.$message.success(msg)
@@ -195,7 +195,7 @@
         })
           .then(() => {
             this.load_data = true
-            this.$http.post(port_table.batch_del, this.batch_select)
+            this.$http.post(request_table.batch_del, this.batch_select)
               .then(({msg}) => {
                 this.get_table_data()
                 this.$message.success(msg)

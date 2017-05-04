@@ -3,8 +3,6 @@
     <transition name="fade" mode="out-in">
       <router-view name="fullView" style="z-index: 200"></router-view>
     </transition>
-    <left-slide style="z-index: 150"></left-slide>
-    <top style="z-index: 150"></top>
     <main-content style="z-index: 100">
       <transition name="fade" mode="out-in">
         <router-view></router-view>
@@ -14,12 +12,12 @@
 </template>
 
 <script type="text/javascript">
-  import {mainContent, top, leftSlide} from 'components'
+  import {mainContent} from 'components'
 
   export default {
     name: 'app',
     components: {
-      mainContent, top, leftSlide
+      mainContent
     }
   }
 </script>

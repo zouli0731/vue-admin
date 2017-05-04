@@ -24,7 +24,7 @@
   </div>
 </template>
 <script type="text/javascript">
-  import {port_user, port_code} from 'common/request_api'
+  import {request_login, result_code} from 'common/request_api'
   import {mapActions} from 'vuex'
   import {SET_USER_INFO} from 'store/actions/type'
 
@@ -53,7 +53,7 @@
           if (valid) {
             this.load_data = true
             //登录提交
-            this.$http.post(port_user.login, this.form)
+            this.$http.post(request_login.login, this.form)
               .then(({data, msg}) => {
                 this.set_user_info({
                   user: data,
@@ -66,7 +66,7 @@
               })
               .catch(({code}) => {
                 this.load_data = false
-                if (code === port_code.error) {
+                if (code === result_code.error) {
                   this.$notify.info({
                     title: '温馨提示',
                     message: '账号和密码都为：admin'

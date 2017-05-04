@@ -32,7 +32,7 @@
   </div>
 </template>
 <script type="text/javascript">
-  import {port_user} from 'common/request_api'
+  import {request_login} from 'common/request_api'
   import {mapGetters, mapActions} from 'vuex'
   import {GET_USER_INFO} from 'store/getters/type'
   import {SET_USER_INFO} from 'store/actions/type'
@@ -58,7 +58,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$http.post(port_user.logout)
+          this.$http.post(request_login.logout)
             .then(({msg}) => {
               this.$message.success(msg)
               this.set_user_info(null)

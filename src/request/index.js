@@ -10,7 +10,7 @@
 
 //导入模块
 import axios from 'axios'
-import {port_code} from 'common/request_api'
+import {result_code} from 'common/request_api'
 import router from 'src/router'
 import store from 'store'
 import {SET_USER_INFO} from 'store/actions/type'
@@ -43,9 +43,9 @@ const install = function (Vue) {
     let dataCode = resData.code
     let dataMsg = resData.msg
     let dataResult = resData.data
-    if (dataCode === port_code.success) {
+    if (dataCode === result_code.success) {
       return Promise.resolve(resData)
-    } else if (dataCode === port_code.unlogin) {
+    } else if (dataCode === result_code.unlogin) {
       setUserInfo(null)
       router.replace({name: "login"})
     }

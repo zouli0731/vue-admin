@@ -9,7 +9,7 @@
  *
  */
 var mock = require('../mock/user')
-var uri = require('../../src/common/request_api').port_user
+var uri = require('../../src/common/request_api').request_login
 
 module.exports = function (apiRouter) {
   //登录

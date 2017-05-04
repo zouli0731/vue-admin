@@ -10,7 +10,7 @@
  */
 
 var Mock = require('mockjs')
-var port_code = require('../../src/common/request_api').port_code
+var result_code = require('../../src/common/request_api').result_code
 
 // 姓名	性别	年龄	生日	地址
 
@@ -25,7 +25,7 @@ var data_list = [{
 }]
 
 exports.list = Mock.mock({
-  code: port_code.success,
+  code: result_code.success,
   msg: "获取成功",
   "data|15": data_list,
   page: 1,
@@ -33,22 +33,22 @@ exports.list = Mock.mock({
 })
 
 exports.get = Mock.mock({
-  code: port_code.success,
+  code: result_code.success,
   msg: "获取成功",
   data: data_list[0]
 })
 
 exports.del = Mock.mock({
-  code: port_code.success,
+  code: result_code.success,
   msg: "删除成功"
 })
 
 exports.save = Mock.mock({
-  code: port_code.success,
+  code: result_code.success,
   msg: "操作成功"
 })
 
 exports.batch_del = Mock.mock({
-  code: port_code.success,
+  code: result_code.success,
   msg: "批量删除成功"
 })

@@ -10,7 +10,7 @@
  */
 
 var mock = require('../mock/table')
-var uri = require('../../src/common/request_api').port_table
+var uri = require('../../src/common/request_api').request_table
 
 module.exports = function (apiRouter) {
   //获取数据列表

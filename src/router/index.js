@@ -72,16 +72,6 @@ const routes = [{
     auth: true
   }
 }, {
-  path: '/charts/bar',
-  name: 'chartsBar',
-  components: {
-    default: require('pages/charts/bar'),
-  },
-  meta: {
-    title: "柱状图表",
-    auth: true
-  }
-}, {
   path: '/user/login',
   name: 'login',
   components: {

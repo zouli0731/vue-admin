@@ -62,7 +62,7 @@
 </template>
 <script type="text/javascript">
   import {panelTitle} from 'components'
-  import {port_table, port_file, port_code} from 'common/request_api'
+  import {request_table, port_file, result_code} from 'common/request_api'
   import {tools_verify} from 'common/tools'
 
   export default{
@@ -91,7 +91,7 @@
       //获取数据
       get_form_data(){
         this.load_data = true
-        this.$http.get(port_table.get, {
+        this.$http.get(request_table.get, {
           params: {
             id: this.route_id
           }
@@ -113,7 +113,7 @@
         this.$refs.form.validate((valid) => {
           if (!valid) return false
           this.on_submit_loading = true
-          this.$http.post(port_table.save, this.form)
+          this.$http.post(request_table.save, this.form)
             .then(({msg}) => {
               this.$message.success(msg)
               setTimeout(() => {
