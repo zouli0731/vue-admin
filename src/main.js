@@ -3,7 +3,6 @@
  * 主程序入口
  *
  */
-
 //导入样式
 import 'normalize.css'
 import 'font-awesome/scss/font-awesome.scss'
@@ -12,17 +11,16 @@ import 'element-ui/lib/theme-default/index.css'
 import Vue from 'vue'
 //导入element组件
 import ElementUI from 'element-ui'
-//导入组件
+//导入请求框架
+import request from './request'
+//导入路由组件
 import router from './router'
 //导入状态管理器
 import store from 'store'
-//导入请求框架
-import request from './request'
 //导入自定义插件
 import Plugins from 'plugins'
 //导入主视图文件
 import App from './App'
-
 //使用element-ui
 Vue.use(ElementUI)
 
@@ -43,3 +41,4 @@ new Vue({
   store,
   ...App
 }).$mount('mainbody')
+

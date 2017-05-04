@@ -153,9 +153,9 @@
             rows: this.rows,
             ...this.search_data
           }
-        }).then(({data: responseData}) => {
-          this.table_data = responseData.data
-          this.total_count = responseData.totalCount
+        }).then(({data}) => {
+          this.table_data = data.data
+          this.total_count = data.totalCount
           this.load_data = false
         }).catch(() => {
           this.load_data = false

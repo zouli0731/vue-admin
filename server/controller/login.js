@@ -25,4 +25,9 @@ module.exports = function (apiRouter) {
       res.json(mock.logout)
     }, 1000)
   });
+  apiRouter.get(uri.user_info, function (req, res) {
+    setTimeout(function () {
+      res.json(mock.user_info)
+    }, 1000)
+  });
 }

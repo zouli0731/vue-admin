@@ -50,7 +50,7 @@
       return {
         nav_menu_data: [{
           title: "主页",
-          path: "/home",
+          path: "/",
           icon: "fa-home"
         }, {
           title: "表格管理",
