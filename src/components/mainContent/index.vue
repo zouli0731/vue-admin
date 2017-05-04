@@ -29,7 +29,7 @@
     props: {
       is_show_all: {
         type: Boolean,
-        default: false
+        default: true
       }
     },
     name: 'content',
