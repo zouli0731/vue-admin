@@ -6,6 +6,6 @@
 //用户信息
 exports.user_info = "/api/post/user/user_info"
 //用户登录
-exports.login = "/api/post/user/login"
+exports.login = "/api/post/login/login"
 //用户登出
-exports.logout = "/api/post/user/logout"
+exports.logout = "/api/post/login/logout"

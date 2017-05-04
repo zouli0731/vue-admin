@@ -55,10 +55,10 @@ const routes = [{
     auth: true
   }
 }, {
-  path: '/user/login',
+  path: '/login',
   name: 'login',
   components: {
-    fullView: require('pages/user/login')
+    fullView: require('pages/login/login')
   }
 }, {
   path: '*',
